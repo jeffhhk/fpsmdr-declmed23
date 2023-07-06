@@ -4,14 +4,17 @@
 
 (define (read-text-file absf)
   (define (iter p)
-    (let ((l (read p)))
-      (if (eof-object? l)
-          (begin
-            (close-input-port p)
-            '())
-          (begin
-            (read-line p)
-            (cons l (lambda () (iter p)))))))
+    (let ((l #f))
+      (lambda ()
+        (unless l
+          (set! l (cons
+		   (read p)       ; replayable stream read
+		   (iter p))))
+        (if (eof-object? (car l))
+            (begin
+              (close-input-port p)
+              '())
+            l))))
   (let ((p (open-input-file absf)))
     (iter p)))
 
