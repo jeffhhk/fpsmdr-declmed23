@@ -78,6 +78,15 @@
 
 (define current-io (make-parameter #f))
 
+(define (activate-defaults)
+  (let ((adirDagopoly (get-environment-variable "adirProj")))
+    (unless adirDagopoly
+      (error 'activate-defaults "please run from provided chezscheme.sh script"))
+    (current-io
+     (make-text-file-io
+      `((absdStore . ,(path-combine adirDagopoly "storage"))
+        (testing? . #t))))))
+
 (define (sig->relf sig)
   (digest-string (format "~a" sig)))
 
@@ -109,7 +118,7 @@
        ((get)
         (let* ((io (current-io))
                (sig (block-sig b))
-               (relf (sig->relf sig)))
+               (relf (path-combine "derived" (sig->relf sig))))
           (if ((io 'exists) relf)
               ((io 'read) relf)
               (begin
@@ -119,7 +128,7 @@
        (else (raise (format "cache-block: unknown method: ~a" m)))))))
 
 ;;; Exogenous data, probably from a third-party data.  Stored under
-;;; a special directory "external".
+;;; a special directory "exogenous".
 (define (block-external relf)
   (make-block
    (lambda (m)
@@ -128,7 +137,7 @@
         `(block-external ,relf))
        ((get)
         (let ((io (current-io)))
-          ((io 'read) (path-combine "external" relf))))))))
+          ((io 'read) (path-combine "exogenous" relf))))))))
 
 (define-syntax define-block
   (lambda (stx)
