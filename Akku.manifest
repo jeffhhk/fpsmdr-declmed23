@@ -5,5 +5,7 @@
   (synopsis "I did not edit Akku.manifest")
   (authors "Guy Q. Schemer")
   (license "NOASSERTION")
-  (depends ("arew-json" "^1.0.0-alpha.0") ("hashing" "^1.3.0"))
+  (depends ("chez-srfi" "^0.0.0-akku.209.552cd37")
+           ("arew-json" "^1.0.0-alpha.0")
+           ("hashing" "^1.3.0"))
 )
