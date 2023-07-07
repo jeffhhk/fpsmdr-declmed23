@@ -23,7 +23,7 @@ This will create the .akku/ subdirectory and associated scripts.
 
 ## Starting
 
-The script chezscheme.sh the "scheme" binary of chez scheme with appropriate configuration.  Read the script comments for details.  For example:
+The script chezscheme.sh wraps the "scheme" binary of chez scheme with appropriate configuration.  Read the script comments for details.  For example:
 
     ./chezscheme.sh
     Chez Scheme Version 9.5
