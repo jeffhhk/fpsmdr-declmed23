@@ -46,7 +46,7 @@ Then in the REPL:
 
     (import (micro dagopoly) (micro fs) (micro stream))
     (activate-defaults)
-    (define hello (block-external "hello.txt"))
+    (define hello (block-exogenous "hello.txt"))
     (s->list (block-get hello))
 
 Which will evaluate to:

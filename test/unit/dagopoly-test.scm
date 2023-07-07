@@ -143,12 +143,12 @@
 ;; read back the external data source
 (check
  (parameterize ((current-io (make-text-file-io io-test-config)))
-   (s->list (block-get (block-reverse (block-external "w1")))))
+   (s->list (block-get (block-reverse (block-exogenous "w1")))))
  => '(4 2 1))
 
 (check
  (parameterize ((current-io (make-text-file-io io-test-config)))
-   (s->list (block-get (cache-block (block-reverse (block-external "w1"))))))
+   (s->list (block-get (cache-block (block-reverse (block-exogenous "w1"))))))
  => '(4 2 1))
 
 (test1-teardown)

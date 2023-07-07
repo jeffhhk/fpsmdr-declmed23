@@ -129,12 +129,12 @@
 
 ;;; Exogenous data, probably from a third-party data.  Stored under
 ;;; a special directory "exogenous".
-(define (block-external relf)
+(define (block-exogenous relf)
   (make-block
    (lambda (m)
      (case m
        ((sig)
-        `(block-external ,relf))
+        `(block-exogenous ,relf))
        ((get)
         (let ((io (current-io)))
           ((io 'read) (path-combine "exogenous" relf))))))))

@@ -6,7 +6,7 @@
 	  current-io
 	  sig->relf
 	  make-block block? block-body block-sig block-get cache-block
-	  block-external define-block
+	  block-exogenous define-block
 	  activate-defaults
 	  )
   (import (scheme)
