@@ -152,9 +152,9 @@
                  `(,(quote id) ,(quote ver)
                    ,(map block-sig
                          (list args ...))))
-                ((get)
+                ((get) (let ()
                  body0 body ...)
-                ))))
+                )))))
        ])))
 
 
