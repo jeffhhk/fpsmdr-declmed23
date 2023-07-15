@@ -1,6 +1,6 @@
 (library (micro dagopoly-python)
   (export 
-   start-python run-python-sig run-python-get block-python
+   block-ipc
    )
   (import
    (scheme)
