@@ -140,21 +140,14 @@
           ((io 'read) (path-combine "exogenous" relf))))))))
 
 (define-syntax define-block
-  (lambda (stx)
-    (syntax-case stx ()
-      [(_ id (args ...) ver body0 body ...)
-       ;; TODO: descriptive error for lack of version
-       #'(define (id args ...)
-           (make-block
-            (lambda (m)
-              (case m
-                ((sig)
-                 `(,(quote id) ,(quote ver)
-                   ,(map block-sig
-                         (list args ...))))
-                ((get) (let ()
-                 body0 body ...)
-                )))))
-       ])))
-
-
+  (syntax-rules ()
+    ((_ id args ver . body)
+     (define (id . args)
+       (make-block
+        (lambda (m)
+          (case m
+            ((sig)
+             `(,(quote id) ,(quote ver)
+               ,(map block-sig (list . args))))
+            ((get) (let () . body)
+             ))))))))
