@@ -1,7 +1,6 @@
 #!/bin/bash
 adirProj=$( cd $( dirname "$0" ) && pwd )
-cd "$adirProj"                       # Work around an cwd dependency bug in akku
-. "$adirProj/.akku/bin/activate"     # Set CHEZSCHEMELIBDIRS, etc via akku
+eval $("$adirProj/.akku/env" -s)     # Set CHEZSCHEMELIBDIRS, etc via akku
 # When Chez is started as a repl, (command-line) evaluates to (""), because there
 # is no "current script."  Thus to find our default storage/ directory, we record
 # our $0 so that it can be retrieved by Chez even when started as a repl.
