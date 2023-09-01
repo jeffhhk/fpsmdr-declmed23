@@ -11,7 +11,8 @@
 	  (cons i (iter (+ i 1))))))
   (iter 0))
 
-(define-block square (xs) v0.0
+; or (define-block square (xs) v0.0
+(define-block (square xs) v0.0
   (let loop ((xs (block-get xs)))
     (cond
      ((null? xs) '())

@@ -141,7 +141,32 @@
 
 (define-syntax define-block
   (syntax-rules ()
+    ((_ (id . args) ver . body)
+     (define (id . args)
+       (make-block
+        (lambda (m)
+          (case m
+            ((sig)
+             `(,(quote id) ,(quote ver)
+               ,(map block-sig (list . args))))
+            ((get) (let () . body)
+     ))))))
     ((_ id args ver . body)
+     (define (id . args)
+       (make-block
+        (lambda (m)
+          (case m
+            ((sig)
+             `(,(quote id) ,(quote ver)
+               ,(map block-sig (list . args))))
+            ((get) (let () . body)
+             ))))))
+     ))
+
+;; as shown in the paper
+(define-syntax define-block-simple
+  (syntax-rules ()
+    ((_ (id . args) ver . body)
      (define (id . args)
        (make-block
         (lambda (m)
