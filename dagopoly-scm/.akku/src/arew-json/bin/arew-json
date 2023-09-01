@@ -1,0 +1,7 @@
+;; -*- mode: scheme -*-
+(import (chezscheme))
+(import (arew json))
+
+
+(write (json-read))
+(flush-output-port (current-output-port))

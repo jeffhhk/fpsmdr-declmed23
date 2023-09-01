@@ -1,0 +1,10 @@
+#!r6rs ; -*- mode: scheme; coding: utf-8 -*-
+(import (akku format manifest))
+
+(akku-package ("arew-json" "1.0.0-alpha.0")
+  (synopsis "JSON reader and writer for Chez Scheme")
+  (authors "Amirouche A. BOUBEKKI")
+  (license "CC0")
+  (depends ("chez-srfi" ">=0.0.0-akku <1.0.0"))
+  (location (git "https://git.sr.ht/~amirouche/arew-json"))
+)

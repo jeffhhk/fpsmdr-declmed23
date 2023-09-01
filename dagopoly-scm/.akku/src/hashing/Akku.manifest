@@ -1,0 +1,11 @@
+#!r6rs ; -*- mode: scheme; coding: utf-8 -*-
+(import (akku format manifest))
+
+(akku-package ("hashing" "1.3.0-beta.0")
+  (synopsis "CRC, HMAC, MD5, SHA-1, SHA-2, xxHash")
+  (description "Libraries for CRCs (pre-defined, custom, byte and
+bit-oriented), HMAC signatures, MD5, SHA-1, SHA-2 (SHA-256, SHA-512)
+and xxHash (XXH32).")
+  (authors "Göran Weinholt <goran@weinholt.se>")
+  (license "MIT")
+  (depends/dev ("chez-srfi" "^0.0.0-akku")))
