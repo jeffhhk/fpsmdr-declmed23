@@ -229,7 +229,7 @@ lines_rtxKg2cEdges = ExogenousTgzTextBlock("v7.6", "rtx-kg2c_7.6.tar.gz", 'edges
 
 def hash_select(frac):
     (n,m) = frac
-    hashfrac = hex(int((2**160-1)*n/m))[2:]  # [2:] - discard prefix "0x"
+    hashfrac = "{:0>40}".format(hex(int((2**160-1)*n/m))[2:])  # [2:] - discard prefix "0x"
     def f(st):
         h = hashlib.sha1()
         h.update(st.encode("latin-1"))
