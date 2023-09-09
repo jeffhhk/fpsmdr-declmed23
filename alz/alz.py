@@ -84,9 +84,14 @@ class PushCounter():
     def getTime(self):
         return time.time()-self._t0
 
+def clear_screen():
+    for i in range(10):
+        print()
+
 def display(xs, n, format=lambda x:x):
     pc = PushCounter()
     xsSamp = reservoir(pc.f(xs.get()), n)
+    clear_screen()
     print("\nSampling {} of {} results ({:.3f} sec) for {}".format(n, pc.get(), pc.getTime(), xs.sig()))
     for x in xsSamp:
         print(format(x))
@@ -100,6 +105,7 @@ def display_top(xs, n, key=None, format=lambda x:x):
     pc = PushCounter()
     # xsLargest = nametime(xs.sig(), lambda: heapq.nsmallest(n, pc.f(xs.get()), key=key))
     xsLargest = heapq.nsmallest(n, pc.f(xs.get()), key=key)
+    clear_screen()
     print("\nTop {} of {} results ({:.3f} sec) for {}".format(n, pc.get(), pc.getTime(), xs.sig()))
     for x in xsLargest:
         print(format(x))
@@ -545,14 +551,14 @@ def keyWithev(x):
 
 display(adspgene, 3)
 
-display(genes(kg2cNodes).cached(), 10)
+display(genes(kg2cNodes).cached(), 3)
 
-display(drugs(kg2cNodes).cached(), 10)
+display(drugs(kg2cNodes).cached(), 3)
 
 display(interacts_molecularly(kg2cEdges).cached(), 3)
 
 display_top(just_drugs(report1),
-            numJustdrugs,
+            10,
             key=ordJustdrugs,
             format=fmtLatexJustDrugs)
 
