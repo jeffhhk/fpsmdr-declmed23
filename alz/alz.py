@@ -92,9 +92,10 @@ def display(xs, n, format=lambda x:x):
     pc = PushCounter()
     xsSamp = reservoir(pc.f(xs.get()), n)
     clear_screen()
-    print("\nSampling {} of {} results ({:.3f} sec) for {}".format(n, pc.get(), pc.getTime(), xs.sig()))
+    print("\nSampling {} of {} results ({:.3f} sec) for {}\n".format(n, pc.get(), pc.getTime(), xs.sig()))
     for x in xsSamp:
         print(format(x))
+    print()
 
 """
 display_top
@@ -106,9 +107,10 @@ def display_top(xs, n, key=None, format=lambda x:x):
     # xsLargest = nametime(xs.sig(), lambda: heapq.nsmallest(n, pc.f(xs.get()), key=key))
     xsLargest = heapq.nsmallest(n, pc.f(xs.get()), key=key)
     clear_screen()
-    print("\nTop {} of {} results ({:.3f} sec) for {}".format(n, pc.get(), pc.getTime(), xs.sig()))
+    print("\nTop {} of {} results ({:.3f} sec) for {}\n".format(n, pc.get(), pc.getTime(), xs.sig()))
     for x in xsLargest:
         print(format(x))
+    print()
 
 """ 
 top_n
@@ -288,7 +290,7 @@ def graph_sampled(ns, es, fnNid, fnSubj, fnObj, frac):
                 edges_sampled_impl(es, fnSubj, fnObj, frac).cached())
 
 frac=(1,10)  # 1/10 expressed as a ratio
-frac=(1,1)  
+frac=(1,1)
 (kg2cNodes, kg2cEdges) = \
     graph_sampled(BlockFlatmap("v7.6.0.2", Node.from_line, lines_rtxKg2cNodes),
                   BlockFlatmap("v7.6.0.2", Edge.from_line, lines_rtxKg2cEdges),
