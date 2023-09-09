@@ -2,6 +2,13 @@
 
 Demonstration code for "Functional Pearl: Signature Memoization for Drug Repurposing" at [Declarative Programming in Biology and Medicine (DeclMed) 2023](https://icfp23.sigplan.org/home/declmed-2023).
 
+# Upstream repositories
+
+See also the following upstream repositories:
+
+> https://github.com/jeffhhk/dagopoly-py
+> https://github.com/jeffhhk/dagopoly-scm
+
 # Instructions
 
 ## Prerequisites
